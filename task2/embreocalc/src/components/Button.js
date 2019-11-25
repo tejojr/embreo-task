@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, Dimensions} from 'react-native';
+import {StyleSheet, Text, TouchableHighlight, Dimensions} from 'react-native';
 
 const screen = Dimensions.get('window');
 const buttonWidth = screen.width / 4;
@@ -63,11 +63,12 @@ const Button = ({onPress, text, theme, special}) => {
     stylesButton = styles.buttonMain;
   }
   return (
-    <TouchableOpacity
+    <TouchableHighlight
+      underlayColor="white"
       onPress={onPress}
       style={special ? styles.buttonTwoColumn : stylesButton}>
       <Text style={stylesText}>{text}</Text>
-    </TouchableOpacity>
+    </TouchableHighlight>
   );
 };
 

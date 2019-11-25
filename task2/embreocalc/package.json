@@ -10,6 +10,8 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "mathjs": "^3.18.0",
+    "numeral": "^2.0.6",
     "react": "16.9.0",
     "react-native": "0.61.4"
   },
