@@ -66,6 +66,15 @@ export class BasicCalc extends Component {
     });
   };
 
+  percentage = () => {
+    let {resultText} = this.state;
+    // eslint-disable-next-line no-useless-escape
+    let value = Number(resultText.toString().replace(/\,/g, '') / 100);
+    this.setState({
+      resultText: value,
+    });
+  };
+
   writeResult = textToAppend => {
     let resultText = this.state.resultText.toString();
     let dotCount = resultText.split('.').length - 1;
@@ -144,65 +153,6 @@ export class BasicCalc extends Component {
     }
   };
 
-  setNumber = number => {
-    let num;
-    if (this.state.number === 0) {
-      num = number;
-    } else {
-      num = `${number}`;
-    }
-    this.setState({
-      number: num,
-      display: this.formatNumber(num),
-    });
-  };
-
-  setOperator = operator => {
-    this.setState({operator});
-    this.setResult(operator);
-  };
-
-  setResult = (operator = null) => {
-    // eslint-disable-next-line no-eval
-    const num = eval(
-      this.state.result + this.state.operator + Number(this.state.number),
-    );
-    if (operator) {
-      this.setState(previusState => ({
-        number: 0,
-        memory: Number(previusState.number),
-        result: num,
-        display: this.formatNumber(num),
-      }));
-    } else {
-      this.setState(previusState => ({
-        number: Number(previusState.number),
-        result: num,
-        display: this.formatNumber(num),
-      }));
-    }
-  };
-
-  percentage = () => {
-    const num = this.state.number / 100;
-    this.setState(() => ({
-      number: num,
-      display: this.formatNumber(num),
-    }));
-  };
-
-  plusMinus = () => {
-    const num = this.state.number * -1;
-    this.setState(() => ({
-      number: num,
-      display: this.formatNumber(num),
-    }));
-  };
-
-  formatNumber = number => {
-    return Number(number).toLocaleString();
-  };
-
   renderPotrait = () => {
     return (
       <>
@@ -225,11 +175,7 @@ export class BasicCalc extends Component {
               theme="top"
               onPress={() => this.plusMinusChange()}
             />
-            <Button
-              text="%"
-              theme="top"
-              onPress={() => this.createExpression('%')}
-            />
+            <Button text="%" theme="top" onPress={() => this.percentage()} />
             <Button
               text="&#247;"
               theme="right"
@@ -303,7 +249,6 @@ const mathOperatorsMap = {
   '×': '*',
   '+': '+',
   '-': '-',
-  '%': '%',
 };
 
 const styles = StyleSheet.create({
