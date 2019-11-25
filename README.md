@@ -1,6 +1,6 @@
 <h1 align="center">Embreo Task</h1>
 <p align='center'>
-  <img src='https://blog.dankicode.com/wp-content/uploads/2018/07/eventos-em-javascript-650x350.png' />
+  <img src='https://github.com/tejojr/embreo-task/blob/master/task2/docs/ic_launcher.png' />
   </a>
 </p>
 
@@ -19,6 +19,7 @@
   - [Screenshot](#screenshot)
   - [Demo App (Youtube)](#demo-app-youtube)
 - [Contributor](#contributor)
+
 # Introduction
 
 Embreo task (functional programming and build ios calculator using react native)
@@ -26,6 +27,7 @@ Embreo task (functional programming and build ios calculator using react native)
 # Functional programming
 
 ## Requirements
+
 - node.js
 - code editor (visual studio code recommend)
 
@@ -33,16 +35,17 @@ Embreo task (functional programming and build ios calculator using react native)
 
     $ git clone https://github.com/tejojr/embreo-task.git
     $ cd embreo-task && cd task 2 && cd functional_programming
-    To run : 
-    $ node fileName 
+    To run :
+    $ node fileName
 
 # Ios Calculator
+
 [![React Native](https://img.shields.io/badge/react%20native-v0.61.4-blue)](https://facebook.github.io/react-native/)
 [![mathjs](https://img.shields.io/badge/mathjs-v3.18.0-orange)](https://www.npmjs.com/package/mathjs)
 [![numeral](https://img.shields.io/badge/numeral-v2.0.6-green.svg?style=rounded-square)](https://www.npmjs.com/package/numeral)
 
-
 ## Requirements
+
 - Ready to run react native
 - code editor (visual studio code recommend)
 
@@ -69,11 +72,11 @@ note : appvalidateSigningDebug failed-> https://stackoverflow.com/questions/5710
 | mathjs       | ^3.18.0 |
 
 - Linter
-    - > Eslint -> arbnb (coding style)
+  - > Eslint -> arbnb (coding style)
 
 ## Download Apk
 
-Download the APK [`here`](https://drive.google.com/file/d/1V8yKkaA40Oo8_DIJ_TrQPPKexQrvzN56/view?usp=sharing)
+Download the APK [`here`](https://github.com/tejojr/embreo-task/blob/master/task2/docs/app-release.apk)
 
 ## Screenshot
 
