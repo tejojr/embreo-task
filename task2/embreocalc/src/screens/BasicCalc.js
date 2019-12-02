@@ -36,6 +36,7 @@ export class BasicCalc extends Component {
       resultTextFontSize: 72,
       pastResult: '',
       pastResultText: '',
+      save: false,
       expression: '',
       minus: '-',
     });
@@ -84,12 +85,19 @@ export class BasicCalc extends Component {
     let isTextOneDot = textToAppend === '.' && dotCount === 0;
 
     if (isTextNotZero || isTextOneDot) {
-      this.setState({
-        resultText:
-          textToAppend === '.' || resultText.includes('.')
-            ? resultText + textToAppend
-            : numeral(resultText + textToAppend).format(),
-      });
+      if (this.state.save === true) {
+        this.setState({
+          resultText: textToAppend,
+          save: false,
+        });
+      } else {
+        this.setState({
+          resultText:
+            textToAppend === '.' || resultText.includes('.')
+              ? resultText + textToAppend
+              : numeral(resultText + textToAppend).format(),
+        });
+      }
     } else if (textToAppend !== '.') {
       this.setState({
         resultText: textToAppend,
@@ -103,6 +111,8 @@ export class BasicCalc extends Component {
   createExpression = operator => {
     let {pastResultText} = this.state;
     let hasPastResultTextEqual = pastResultText.includes('=');
+    // eslint-disable-next-line react/no-access-state-in-setstate
+    let newRes = this.state.resultText;
     pastResultText = hasPastResultTextEqual
       ? `${this.state.resultText}${operator}`
       : `${this.state.pastResultText + this.state.resultText}${operator}`;
@@ -116,7 +126,8 @@ export class BasicCalc extends Component {
           (this.state.expression += result + mathOperatorsMap[operator]),
       pastResult: `${result}${mathOperatorsMap[operator]}`,
       pastResultText,
-      resultText: '0',
+      resultText: newRes,
+      save: true,
     });
   };
 
@@ -177,7 +188,7 @@ export class BasicCalc extends Component {
             />
             <Button text="%" theme="top" onPress={() => this.percentage()} />
             <Button
-              text="&#247;"
+              text="÷"
               theme="right"
               onPress={() => this.createExpression('÷')}
             />
