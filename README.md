@@ -76,7 +76,7 @@ note : appvalidateSigningDebug failed-> https://stackoverflow.com/questions/5710
 
 ## Download Apk
 
-Download the APK [`here`](https://github.com/tejojr/embreo-task/blob/master/task2/docs/app-release.apk)
+Download Apk [`here`](https://github.com/tejojr/embreo-task/blob/master/task2/docs/app-release.apk)
 
 ## Screenshot
 
@@ -88,7 +88,7 @@ Download the APK [`here`](https://github.com/tejojr/embreo-task/blob/master/task
 
 ## Demo App (Youtube)
 
-Demo the APK [`here`](https://www.youtube.com/watch?v=cHOGFXnTkZcA)
+Demo App [`here`](https://www.youtube.com/watch?v=cHOGFXnTkZcA)
 
 # Contributor
 
