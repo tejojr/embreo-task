@@ -16,7 +16,8 @@ export class BasicCalc extends Component {
       resultTextFontSize: 72,
       pastResultText: '',
       expression: '',
-      minus: '-',
+      save: false,
+      end: false,
       orientation: 'potrait',
     };
     Dimensions.addEventListener('change', () => {
@@ -38,7 +39,6 @@ export class BasicCalc extends Component {
       pastResultText: '',
       save: false,
       expression: '',
-      minus: '-',
     });
   };
 
@@ -51,19 +51,10 @@ export class BasicCalc extends Component {
   };
 
   plusMinusChange = () => {
-    let {minus, resultText} = this.state;
-
-    if (minus) {
-      this.setState({
-        resultText: minus + resultText,
-        minus: '',
-      });
-      return;
-    }
-
+    let {resultText} = this.state;
+    let resultMin = resultText * -1;
     this.setState({
-      resultText: resultText.slice(1),
-      minus: '-',
+      resultText: resultMin,
     });
   };
 
@@ -74,6 +65,7 @@ export class BasicCalc extends Component {
     this.setState({
       resultText: value,
     });
+    this.resizeResultText(this.state.resultText);
   };
 
   writeResult = textToAppend => {
@@ -85,13 +77,18 @@ export class BasicCalc extends Component {
     let isTextOneDot = textToAppend === '.' && dotCount === 0;
 
     if (isTextNotZero || isTextOneDot) {
-      if (this.state.save === true) {
+      if (
+        this.state.save === true ||
+        (this.state.end === true && textToAppend !== '.')
+      ) {
         this.setState({
           resultText: textToAppend,
           save: false,
+          end: false,
         });
       } else {
         this.setState({
+          end: false,
           resultText:
             textToAppend === '.' || resultText.includes('.')
               ? resultText + textToAppend
@@ -100,8 +97,8 @@ export class BasicCalc extends Component {
       }
     } else if (textToAppend !== '.') {
       this.setState({
+        end: false,
         resultText: textToAppend,
-        minus: '-',
       });
     }
 
@@ -149,6 +146,8 @@ export class BasicCalc extends Component {
       this.setState({
         pastResultText,
         resultText: result,
+        save: false,
+        end: true,
       });
     }
   };
